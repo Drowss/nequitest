@@ -27,4 +27,9 @@ public class ProductUseCase implements IProductServicePort {
     public void deleteProductFromBranch(Integer productId, Integer branchId) {
         productPersistencePort.deleteProductFromBranch(productId, branchId);
     }
+
+    @Override
+    public void updateStock(Integer productId, Integer stock) {
+        productPersistencePort.updateStock(productId, stock);
+    }
 }

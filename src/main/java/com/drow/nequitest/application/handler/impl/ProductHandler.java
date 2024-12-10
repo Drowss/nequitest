@@ -35,4 +35,9 @@ public class ProductHandler implements IProductHandler {
     public void deleteProductFromBranch(Integer productId, Integer branchId) {
         productServicePort.deleteProductFromBranch(productId, branchId);
     }
+
+    @Override
+    public void updateStock(Integer productId, Integer stock) {
+        productServicePort.updateStock(productId, stock);
+    }
 }

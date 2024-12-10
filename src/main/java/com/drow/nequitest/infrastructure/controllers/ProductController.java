@@ -33,4 +33,10 @@ public class ProductController {
         productHandler.deleteProductFromBranch(productId, branchId);
         return ResponseEntity.ok("Product deleted from branch correctly");
     }
+
+    @PatchMapping("/update-stock")
+    public ResponseEntity<?> updateStock(@RequestParam("productId") Integer productId, @RequestParam("stock") Integer stock) {
+        productHandler.updateStock(productId, stock);
+        return ResponseEntity.ok("Stock updated correctly");
+    }
 }

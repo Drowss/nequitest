@@ -8,4 +8,6 @@ public interface IProductServicePort {
     void addProductToSucursal(Integer productId, Integer sucursalId);
 
     void deleteProductFromBranch(Integer productId, Integer branchId);
+
+    void updateStock(Integer productId, Integer stock);
 }
