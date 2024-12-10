@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Plantilla de CloudFormation para desplegar una aplicación Spring Boot expuesta en el puerto 8080'
+
+Resources:
+  EC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t2.medium
+      ImageId: 'ami-0453ec754f44f9a4a'
+      SecurityGroupIds:
+        - !Ref InstanceSecurityGroup
+      KeyName: 'Practitioner'
+      Tags:
+        - Key: Name
+          Value: 'SpringBootAPI'
+      BlockDeviceMappings:
+        - DeviceName: "/dev/sda1"
+          Ebs:
+            VolumeSize: 20
+            VolumeType: gp3
+
+  InstanceSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: 'Habilitar acceso HTTP y SSH'
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '8080'
+          ToPort: '8080'
+          CidrIp: '0.0.0.0/0'
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: '0.0.0.0/0'
+
+Outputs:
+  InstanceId:
+    Description: 'ID de la instancia EC2'
+    Value: !Ref EC2Instance
+
+  PublicIP:
+    Description: 'Dirección IP pública de la instancia EC2'
+    Value: !GetAtt EC2Instance.PublicIp
