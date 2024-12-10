@@ -10,6 +10,9 @@ import com.drow.nequitest.infrastructure.out.repository.IProductRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
+
 import static com.drow.nequitest.core.Constants.BRANCH_NOT_FOUND;
 import static com.drow.nequitest.core.Constants.PRODUCT_NOT_FOUND;
 
@@ -71,5 +74,14 @@ public class ProductJpaAdapter implements IProductPersistencePort {
 
         product.setName(name);
         productRepository.save(product);
+    }
+
+    @Override
+    public ProductModel getProductStock() {
+        List<ProductEntity> products = productRepository.findAll();
+        ProductEntity prod = products.stream()
+                .max(Comparator.comparingInt(ProductEntity::getStock))
+                .orElse(null);
+        return modelMapper.map(prod, ProductModel.class);
     }
 }

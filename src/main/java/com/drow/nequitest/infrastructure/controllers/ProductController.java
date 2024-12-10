@@ -1,6 +1,7 @@
 package com.drow.nequitest.infrastructure.controllers;
 
 import com.drow.nequitest.application.dto.request.ProductRequestDto;
+import com.drow.nequitest.application.dto.response.ProductResponseDto;
 import com.drow.nequitest.application.handler.IProductHandler;
 import com.drow.nequitest.infrastructure.out.entities.ProductEntity;
 import jakarta.validation.Valid;
@@ -44,5 +45,11 @@ public class ProductController {
     public ResponseEntity<?> updateName(@RequestParam("productId") Integer productId, @RequestParam("name") String name) {
         productHandler.updateName(productId, name);
         return ResponseEntity.ok("Name updated correctly");
+    }
+
+    @GetMapping("/get-product/stock")
+    public ResponseEntity<?> getProductStock() {
+        ProductResponseDto productResponseDto = productHandler.getProductStock();
+        return ResponseEntity.ok(productResponseDto);
     }
 }

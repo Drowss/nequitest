@@ -12,4 +12,6 @@ public interface IProductPersistencePort {
     void updateStock(Integer productId, Integer stock);
 
     void updateName(Integer productId, String name);
+
+    ProductModel getProductStock();
 }

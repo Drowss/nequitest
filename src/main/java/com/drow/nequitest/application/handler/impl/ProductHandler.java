@@ -1,10 +1,10 @@
 package com.drow.nequitest.application.handler.impl;
 
 import com.drow.nequitest.application.dto.request.ProductRequestDto;
+import com.drow.nequitest.application.dto.response.ProductResponseDto;
 import com.drow.nequitest.application.handler.IProductHandler;
 import com.drow.nequitest.domain.api.IProductServicePort;
 import com.drow.nequitest.domain.model.ProductModel;
-import com.drow.nequitest.infrastructure.out.entities.ProductEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,5 +44,11 @@ public class ProductHandler implements IProductHandler {
     @Override
     public void updateName(Integer productId, String name) {
         productServicePort.updateName(productId, name);
+    }
+
+    @Override
+    public ProductResponseDto getProductStock() {
+        ProductModel productModel = productServicePort.getProductStock();
+        return modelMapper.map(productModel, ProductResponseDto.class);
     }
 }

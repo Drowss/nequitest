@@ -1,6 +1,7 @@
 package com.drow.nequitest.application.handler;
 
 import com.drow.nequitest.application.dto.request.ProductRequestDto;
+import com.drow.nequitest.application.dto.response.ProductResponseDto;
 import com.drow.nequitest.infrastructure.out.entities.ProductEntity;
 
 public interface IProductHandler {
@@ -13,4 +14,6 @@ public interface IProductHandler {
     void updateStock(Integer productId, Integer stock);
 
     void updateName(Integer productId, String name);
+
+    ProductResponseDto getProductStock();
 }
