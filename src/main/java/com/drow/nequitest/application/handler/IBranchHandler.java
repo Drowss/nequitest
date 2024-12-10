@@ -4,4 +4,6 @@ import com.drow.nequitest.application.dto.request.BranchRequestDto;
 
 public interface IBranchHandler {
     void createBranch(BranchRequestDto branchRequestDto);
+
+    void addBranchToFranchise(Integer branchId, Integer franchiseId);
 }

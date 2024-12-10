@@ -53,4 +53,12 @@ public class BranchEntity {
     public void setProducts(List<ProductEntity> products) {
         this.products = products;
     }
+
+    public List<FranchiseEntity> getFranchises() {
+        return franchises;
+    }
+
+    public void setFranchises(List<FranchiseEntity> franchises) {
+        this.franchises = franchises;
+    }
 }

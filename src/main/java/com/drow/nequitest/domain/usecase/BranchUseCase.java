@@ -18,4 +18,9 @@ public class BranchUseCase implements IBranchServicePort {
     public void createBranch(BranchModel branchModel) {
         branchPersistencePort.createBranch(branchModel);
     }
+
+    @Override
+    public void addBranchToFranchise(Integer branchId, Integer franchiseId) {
+        branchPersistencePort.addBranchToFranchise(branchId, franchiseId);
+    }
 }

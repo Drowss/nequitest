@@ -22,4 +22,9 @@ public class BranchHandler implements IBranchHandler {
     public void createBranch(BranchRequestDto branchRequestDto) {
         branchServicePort.createBranch(modelMapper.map(branchRequestDto, BranchModel.class));
     }
+
+    @Override
+    public void addBranchToFranchise(Integer branchId, Integer franchiseId) {
+        branchServicePort.addBranchToFranchise(branchId, franchiseId);
+    }
 }
