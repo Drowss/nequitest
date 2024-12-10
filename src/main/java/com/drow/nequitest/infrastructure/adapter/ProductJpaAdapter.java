@@ -10,6 +10,9 @@ import com.drow.nequitest.infrastructure.out.repository.IProductRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import static com.drow.nequitest.core.Constants.BRANCH_NOT_FOUND;
+import static com.drow.nequitest.core.Constants.PRODUCT_NOT_FOUND;
+
 @Service
 public class ProductJpaAdapter implements IProductPersistencePort {
 
@@ -31,10 +34,24 @@ public class ProductJpaAdapter implements IProductPersistencePort {
 
     @Override
     public void addProductToSucursal(Integer productId, Integer sucursalId) {
-        ProductEntity product = productRepository.findById(productId).orElseThrow(() -> new FranchisesException("Product not found"));
-        BranchEntity branch = branchRepository.findById(sucursalId).orElseThrow(() -> new FranchisesException("Branch not found"));
+        ProductEntity product = productRepository.findById(productId).orElseThrow(() -> new FranchisesException(PRODUCT_NOT_FOUND));
+        BranchEntity branch = branchRepository.findById(sucursalId).orElseThrow(() -> new FranchisesException(BRANCH_NOT_FOUND));
 
         product.getBranches().add(branch);
         productRepository.save(product);
+    }
+
+    @Override
+    public void deleteProductFromBranch(Integer productId, Integer branchId) {
+        ProductEntity product = productRepository.findById(productId)
+                .orElseThrow(() -> new FranchisesException(PRODUCT_NOT_FOUND));
+        BranchEntity branch = branchRepository.findById(branchId)
+                .orElseThrow(() -> new FranchisesException(BRANCH_NOT_FOUND));
+
+        product.getBranches().remove(branch);
+        branch.getProducts().remove(product);
+
+        productRepository.save(product);
+        branchRepository.save(branch);
     }
 }

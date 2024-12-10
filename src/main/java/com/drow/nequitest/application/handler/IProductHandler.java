@@ -7,4 +7,6 @@ public interface IProductHandler {
     void createProduct(ProductRequestDto productRequestDto);
 
     void addProductToSucursal(Integer productId, Integer sucursalId);
+
+    void deleteProductFromBranch(Integer productId, Integer branchId);
 }

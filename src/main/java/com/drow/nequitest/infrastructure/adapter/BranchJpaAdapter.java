@@ -10,6 +10,9 @@ import com.drow.nequitest.infrastructure.out.repository.IFranchiseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import static com.drow.nequitest.core.Constants.BRANCH_NOT_FOUND;
+import static com.drow.nequitest.core.Constants.FRANCHISE_NOT_FOUND;
+
 @Service
 public class BranchJpaAdapter implements IBranchPersistencePort {
 
@@ -30,8 +33,8 @@ public class BranchJpaAdapter implements IBranchPersistencePort {
 
     @Override
     public void addBranchToFranchise(Integer branchId, Integer franchiseId) {
-        BranchEntity branch = branchRepository.findById(branchId).orElseThrow(() -> new FranchisesException("Branch not found"));
-        FranchiseEntity franchise = franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchisesException("Franchise not found"));
+        BranchEntity branch = branchRepository.findById(branchId).orElseThrow(() -> new FranchisesException(BRANCH_NOT_FOUND));
+        FranchiseEntity franchise = franchiseRepository.findById(franchiseId).orElseThrow(() -> new FranchisesException(FRANCHISE_NOT_FOUND));
 
         branch.getFranchises().add(franchise);
         branchRepository.save(branch);

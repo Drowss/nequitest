@@ -27,4 +27,10 @@ public class ProductController {
         productHandler.addProductToSucursal(productId, sucursalId);
         return ResponseEntity.ok("Product added correctly to the branch");
     }
+
+    @DeleteMapping("/delete-product/sucursal")
+    public ResponseEntity<?> deleteProduct(@RequestParam("productId") Integer productId, @RequestParam("branchId") Integer branchId) {
+        productHandler.deleteProductFromBranch(productId, branchId);
+        return ResponseEntity.ok("Product deleted from branch correctly");
+    }
 }

@@ -22,4 +22,9 @@ public class ProductUseCase implements IProductServicePort {
     public void addProductToSucursal(Integer productId, Integer sucursalId) {
         productPersistencePort.addProductToSucursal(productId, sucursalId);
     }
+
+    @Override
+    public void deleteProductFromBranch(Integer productId, Integer branchId) {
+        productPersistencePort.deleteProductFromBranch(productId, branchId);
+    }
 }

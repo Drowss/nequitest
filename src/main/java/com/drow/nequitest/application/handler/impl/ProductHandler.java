@@ -30,4 +30,9 @@ public class ProductHandler implements IProductHandler {
     public void addProductToSucursal(Integer productId, Integer sucursalId) {
         productServicePort.addProductToSucursal(productId, sucursalId);
     }
+
+    @Override
+    public void deleteProductFromBranch(Integer productId, Integer branchId) {
+        productServicePort.deleteProductFromBranch(productId, branchId);
+    }
 }

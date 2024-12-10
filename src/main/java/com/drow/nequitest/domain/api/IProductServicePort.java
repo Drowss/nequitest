@@ -6,4 +6,6 @@ public interface IProductServicePort {
     void createProduct(ProductModel productModel);
 
     void addProductToSucursal(Integer productId, Integer sucursalId);
+
+    void deleteProductFromBranch(Integer productId, Integer branchId);
 }
