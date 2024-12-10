@@ -1,35 +1,26 @@
 package com.drow.nequitest.infrastructure.out.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
-@Table(name = "products")
-public class ProductEntity {
+@Table(name = "franchises")
+public class FranchiseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private Integer stock;
-    @ManyToMany
-    @JoinTable(
-            name = "product_branch",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "branch_id")
-    )
+    @ManyToMany(mappedBy = "franchises")
     private List<BranchEntity> branches;
 
-    public ProductEntity(Integer id, String name, Integer stock) {
-        this.id = id;
-        this.name = name;
-        this.stock = stock;
+    public FranchiseEntity() {
     }
 
-    public ProductEntity() {
+    public FranchiseEntity(Integer id, String name, List<BranchEntity> branches) {
+        this.id = id;
+        this.name = name;
+        this.branches = branches;
     }
 
     public Integer getId() {
@@ -46,14 +37,6 @@ public class ProductEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
     }
 
     public List<BranchEntity> getBranches() {

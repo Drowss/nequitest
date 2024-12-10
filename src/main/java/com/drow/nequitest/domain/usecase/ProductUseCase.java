@@ -17,4 +17,9 @@ public class ProductUseCase implements IProductServicePort {
     public void createProduct(ProductModel productModel) {
         productPersistencePort.createProduct(productModel);
     }
+
+    @Override
+    public void addProductToSucursal(Integer productId, Integer sucursalId) {
+        productPersistencePort.addProductToSucursal(productId, sucursalId);
+    }
 }

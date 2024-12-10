@@ -25,4 +25,9 @@ public class ProductHandler implements IProductHandler {
     public void createProduct(ProductRequestDto productRequestDto) {
         productServicePort.createProduct(modelMapper.map(productRequestDto, ProductModel.class));
     }
+
+    @Override
+    public void addProductToSucursal(Integer productId, Integer sucursalId) {
+        productServicePort.addProductToSucursal(productId, sucursalId);
+    }
 }

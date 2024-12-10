@@ -4,10 +4,8 @@ import com.drow.nequitest.application.dto.request.ProductRequestDto;
 import com.drow.nequitest.application.handler.IProductHandler;
 import com.drow.nequitest.infrastructure.out.entities.ProductEntity;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -20,7 +18,13 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public void createProduct(@RequestBody ProductRequestDto productRequestDto) {
+    public void createProduct(@RequestBody @Valid ProductRequestDto productRequestDto) {
         productHandler.createProduct(productRequestDto);
+    }
+
+    @PostMapping("/add-product/sucursal")
+    public ResponseEntity<?> addProductToSucursal(@RequestParam("productId") Integer productId, @RequestParam("sucursalId") Integer sucursalId) {
+        productHandler.addProductToSucursal(productId, sucursalId);
+        return ResponseEntity.ok("Product added correctly to the branch");
     }
 }

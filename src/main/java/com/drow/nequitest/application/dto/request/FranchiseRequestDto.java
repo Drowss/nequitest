@@ -1,12 +1,12 @@
-package com.drow.nequitest.domain.model;
+package com.drow.nequitest.application.dto.request;
 
-public class FranchiseModel {
+public class FranchiseRequestDto {
     private String name;
 
-    public FranchiseModel() {
+    public FranchiseRequestDto() {
     }
 
-    public FranchiseModel(String name) {
+    public FranchiseRequestDto(String name) {
         this.name = name;
     }
 

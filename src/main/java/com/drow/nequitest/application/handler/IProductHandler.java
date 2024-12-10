@@ -5,4 +5,6 @@ import com.drow.nequitest.infrastructure.out.entities.ProductEntity;
 
 public interface IProductHandler {
     void createProduct(ProductRequestDto productRequestDto);
+
+    void addProductToSucursal(Integer productId, Integer sucursalId);
 }
