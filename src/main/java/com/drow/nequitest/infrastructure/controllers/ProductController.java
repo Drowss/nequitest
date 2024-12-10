@@ -2,11 +2,14 @@ package com.drow.nequitest.infrastructure.controllers;
 
 import com.drow.nequitest.application.dto.request.ProductRequestDto;
 import com.drow.nequitest.application.dto.response.ProductResponseDto;
+import com.drow.nequitest.application.dto.response.ProductStockbyBranchResponse;
 import com.drow.nequitest.application.handler.IProductHandler;
 import com.drow.nequitest.infrastructure.out.entities.ProductEntity;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/product")
@@ -51,5 +54,10 @@ public class ProductController {
     public ResponseEntity<?> getProductStock() {
         ProductResponseDto productResponseDto = productHandler.getProductStock();
         return ResponseEntity.ok(productResponseDto);
+    }
+
+    @GetMapping("/stock")
+    public List<ProductStockbyBranchResponse> getProductStockByFranchise(@RequestParam("franchiseId") Integer franchiseId) {
+        return productHandler.getProductStockByFranchise(franchiseId);
     }
 }

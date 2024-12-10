@@ -2,8 +2,11 @@ package com.drow.nequitest.domain.usecase;
 
 import com.drow.nequitest.domain.api.IProductServicePort;
 import com.drow.nequitest.domain.model.ProductModel;
+import com.drow.nequitest.domain.model.ProductStockbyBranchModel;
 import com.drow.nequitest.domain.spi.IProductPersistencePort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProductUseCase implements IProductServicePort {
@@ -41,5 +44,10 @@ public class ProductUseCase implements IProductServicePort {
     @Override
     public ProductModel getProductStock() {
         return productPersistencePort.getProductStock();
+    }
+
+    @Override
+    public List<ProductStockbyBranchModel> getProductStockByFranchise(Integer franchiseId) {
+        return productPersistencePort.getProductStockByFranchise(franchiseId);
     }
 }

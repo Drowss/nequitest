@@ -1,6 +1,9 @@
 package com.drow.nequitest.domain.spi;
 
 import com.drow.nequitest.domain.model.ProductModel;
+import com.drow.nequitest.domain.model.ProductStockbyBranchModel;
+
+import java.util.List;
 
 public interface IProductPersistencePort {
     void createProduct(ProductModel productModel);
@@ -14,4 +17,6 @@ public interface IProductPersistencePort {
     void updateName(Integer productId, String name);
 
     ProductModel getProductStock();
+
+    List<ProductStockbyBranchModel> getProductStockByFranchise(Integer franchiseId);
 }
