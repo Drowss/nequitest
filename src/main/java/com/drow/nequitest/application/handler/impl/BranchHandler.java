@@ -27,4 +27,9 @@ public class BranchHandler implements IBranchHandler {
     public void addBranchToFranchise(Integer branchId, Integer franchiseId) {
         branchServicePort.addBranchToFranchise(branchId, franchiseId);
     }
+
+    @Override
+    public void updateName(Integer branchId, String name) {
+        branchServicePort.updateName(branchId, name);
+    }
 }

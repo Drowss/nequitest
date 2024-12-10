@@ -39,4 +39,11 @@ public class BranchJpaAdapter implements IBranchPersistencePort {
         branch.getFranchises().add(franchise);
         branchRepository.save(branch);
     }
+
+    @Override
+    public void updateName(Integer branchId, String name) {
+        BranchEntity branch = branchRepository.findById(branchId).orElseThrow(() -> new FranchisesException(BRANCH_NOT_FOUND));
+        branch.setName(name);
+        branchRepository.save(branch);
+    }
 }

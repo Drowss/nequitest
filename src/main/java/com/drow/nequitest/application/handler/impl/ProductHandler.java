@@ -40,4 +40,9 @@ public class ProductHandler implements IProductHandler {
     public void updateStock(Integer productId, Integer stock) {
         productServicePort.updateStock(productId, stock);
     }
+
+    @Override
+    public void updateName(Integer productId, String name) {
+        productServicePort.updateName(productId, name);
+    }
 }

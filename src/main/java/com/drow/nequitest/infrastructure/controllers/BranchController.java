@@ -26,4 +26,10 @@ public class BranchController {
         branchHandler.addBranchToFranchise(branchId, franchiseId);
         return ResponseEntity.ok("Branch added correctly to the franchise");
     }
+
+    @PatchMapping("/update-name")
+    public ResponseEntity<?> updateName(@RequestParam("branchId") Integer branchId, @RequestParam("name") String name) {
+        branchHandler.updateName(branchId, name);
+        return ResponseEntity.ok("Name updated correctly");
+    }
 }

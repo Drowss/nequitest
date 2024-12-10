@@ -32,4 +32,9 @@ public class ProductUseCase implements IProductServicePort {
     public void updateStock(Integer productId, Integer stock) {
         productPersistencePort.updateStock(productId, stock);
     }
+
+    @Override
+    public void updateName(Integer productId, String name) {
+        productPersistencePort.updateName(productId, name);
+    }
 }

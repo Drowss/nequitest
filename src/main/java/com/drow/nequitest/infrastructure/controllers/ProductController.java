@@ -39,4 +39,10 @@ public class ProductController {
         productHandler.updateStock(productId, stock);
         return ResponseEntity.ok("Stock updated correctly");
     }
+
+    @PatchMapping("/update-name")
+    public ResponseEntity<?> updateName(@RequestParam("productId") Integer productId, @RequestParam("name") String name) {
+        productHandler.updateName(productId, name);
+        return ResponseEntity.ok("Name updated correctly");
+    }
 }

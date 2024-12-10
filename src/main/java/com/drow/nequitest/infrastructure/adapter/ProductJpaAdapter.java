@@ -63,4 +63,13 @@ public class ProductJpaAdapter implements IProductPersistencePort {
         product.setStock(stock);
         productRepository.save(product);
     }
+
+    @Override
+    public void updateName(Integer productId, String name) {
+        ProductEntity product = productRepository.findById(productId)
+                .orElseThrow(() -> new FranchisesException(PRODUCT_NOT_FOUND));
+
+        product.setName(name);
+        productRepository.save(product);
+    }
 }

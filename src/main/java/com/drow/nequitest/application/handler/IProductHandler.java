@@ -11,4 +11,6 @@ public interface IProductHandler {
     void deleteProductFromBranch(Integer productId, Integer branchId);
 
     void updateStock(Integer productId, Integer stock);
+
+    void updateName(Integer productId, String name);
 }

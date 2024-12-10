@@ -22,4 +22,9 @@ public class FranchiseHandler implements IFranchiseHandler {
     public void createFranchise(FranchiseRequestDto franchiseRequestDto) {
         franchiseServicePort.createFranchise(modelMapper.map(franchiseRequestDto, FranchiseModel.class));
     }
+
+    @Override
+    public void updateName(Integer franchiseId, String name) {
+        franchiseServicePort.updateName(franchiseId, name);
+    }
 }

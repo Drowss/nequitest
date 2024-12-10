@@ -18,4 +18,9 @@ public class FranchiseUseCase implements IFranchiseServicePort {
     public void createFranchise(FranchiseModel franchiseModel) {
         franchisePersistencePort.createFranchise(franchiseModel);
     }
+
+    @Override
+    public void updateName(Integer franchiseId, String name) {
+        franchisePersistencePort.updateName(franchiseId, name);
+    }
 }

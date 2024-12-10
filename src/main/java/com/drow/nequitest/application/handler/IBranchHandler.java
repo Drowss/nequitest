@@ -6,4 +6,6 @@ public interface IBranchHandler {
     void createBranch(BranchRequestDto branchRequestDto);
 
     void addBranchToFranchise(Integer branchId, Integer franchiseId);
+
+    void updateName(Integer branchId, String name);
 }
