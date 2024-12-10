@@ -1,6 +1,9 @@
 package com.drow.nequitest.application.dto.request;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class FranchiseRequestDto {
+    @NotEmpty
     private String name;
 
     public FranchiseRequestDto() {
